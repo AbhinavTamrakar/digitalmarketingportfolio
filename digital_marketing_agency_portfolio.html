@@ -1,0 +1,410 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .port {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--color-text-primary);
+    background: var(--color-background-primary);
+  }
+
+  .nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; letter-spacing: -0.3px;
+  }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-size: 13px; color: var(--color-text-secondary);
+    text-decoration: none; cursor: pointer;
+  }
+  .nav-links a:hover { color: var(--color-text-primary); }
+  .cta-btn {
+    background: var(--color-text-primary); color: var(--color-background-primary);
+    border: none; border-radius: 100px; padding: 8px 20px;
+    font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.8; }
+
+  .hero {
+    padding: 5rem 2rem 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .hero-badge {
+    display: inline-block; font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--color-text-secondary); margin-bottom: 1.5rem;
+    border: 0.5px solid var(--color-border-secondary);
+    padding: 4px 12px; border-radius: 100px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 46px; line-height: 1.1; letter-spacing: -1px;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--color-text-secondary); }
+  .hero p {
+    font-size: 15px; line-height: 1.7; color: var(--color-text-secondary);
+    margin-bottom: 2rem; max-width: 380px;
+  }
+  .hero-btns { display: flex; gap: 12px; }
+  .btn-outline {
+    background: transparent; color: var(--color-text-primary);
+    border: 0.5px solid var(--color-border-primary);
+    border-radius: 100px; padding: 8px 20px;
+    font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg); overflow: hidden;
+  }
+  .stat-cell {
+    padding: 1.75rem 1.5rem;
+    background: var(--color-background-secondary);
+  }
+  .stat-cell:nth-child(odd) { background: var(--color-background-tertiary); }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px; letter-spacing: -1px; margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--color-text-secondary); }
+
+  .section { padding: 4rem 2rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .section-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--color-text-tertiary);
+    margin-bottom: 2rem;
+  }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 2rem; }
+  .service-card {
+    padding: 1.75rem 1.5rem;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 0; position: relative;
+  }
+  .service-card:first-child { border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg); }
+  .service-card:last-child { border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0; }
+  .svc-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .svc-icon svg { width: 16px; height: 16px; stroke: var(--color-text-secondary); fill: none; }
+  .service-card h3 { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 2rem; }
+  .work-card {
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg); overflow: hidden;
+  }
+  .work-img {
+    height: 140px; display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif; font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+  .work-img.teal { background: #E1F5EE; color: #0F6E56; }
+  .work-img.blue { background: #E6F1FB; color: #185FA5; }
+  .work-img.amber { background: #FAEEDA; color: #854F0B; }
+  .work-img.pink { background: #FBEAF0; color: #993556; }
+  .work-meta { padding: 1rem 1.25rem; }
+  .work-tag {
+    font-size: 10px; font-weight: 500; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 4px;
+  }
+  .work-meta h4 { font-size: 14px; font-weight: 500; }
+
+  .process-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg);
+    overflow: hidden; margin-top: 2rem;
+  }
+  .step {
+    padding: 1.5rem; border-right: 0.5px solid var(--color-border-tertiary);
+  }
+  .step:last-child { border-right: none; }
+  .step-num {
+    font-family: 'DM Serif Display', serif; font-size: 32px;
+    color: var(--color-text-tertiary); margin-bottom: 0.75rem;
+  }
+  .step h4 { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .step p { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 2rem; }
+  .testi-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg); padding: 1.5rem;
+  }
+  .stars { color: #BA7517; font-size: 12px; margin-bottom: 0.75rem; }
+  .testi-card blockquote {
+    font-size: 14px; line-height: 1.6; color: var(--color-text-secondary);
+    margin-bottom: 1rem; border: none; padding: 0;
+  }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 500;
+  }
+  .av1 { background: #E1F5EE; color: #0F6E56; }
+  .av2 { background: #E6F1FB; color: #185FA5; }
+  .av3 { background: #FAEEDA; color: #854F0B; }
+  .av4 { background: #FBEAF0; color: #993556; }
+  .author-name { font-size: 13px; font-weight: 500; }
+  .author-role { font-size: 11px; color: var(--color-text-tertiary); }
+
+  .cta-section {
+    padding: 5rem 2rem; text-align: center;
+    background: var(--color-background-secondary);
+  }
+  .cta-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px; letter-spacing: -0.5px; margin-bottom: 1rem;
+  }
+  .cta-section h2 em { font-style: italic; color: var(--color-text-secondary); }
+  .cta-section p { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 2rem; }
+  .cta-group { display: flex; gap: 12px; justify-content: center; }
+
+  .footer {
+    padding: 2rem; display: flex; justify-content: space-between; align-items: center;
+    border-top: 0.5px solid var(--color-border-tertiary);
+  }
+  .footer-logo { font-family: 'DM Serif Display', serif; font-size: 16px; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 12px; color: var(--color-text-tertiary); text-decoration: none; cursor: pointer; }
+</style>
+
+<div class="port">
+
+  <nav class="nav">
+    <div class="logo">Apex Studio</div>
+    <div class="nav-links">
+      <a>Work</a>
+      <a>Services</a>
+      <a>Process</a>
+      <a>Contact</a>
+    </div>
+    <button class="cta-btn" onclick="sendPrompt('Draft a contact form section for my portfolio')">Let's talk ↗</button>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <div class="hero-badge">Digital Marketing Agency</div>
+      <h1>Strategy that <em>drives</em> growth.</h1>
+      <p>We build brands and craft marketing systems that convert audiences into loyal customers — from positioning to execution.</p>
+      <div class="hero-btns">
+        <button class="cta-btn" onclick="sendPrompt('What should I include in my agency portfolio case studies?')">View our work ↗</button>
+        <button class="btn-outline">Our services</button>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-cell">
+        <div class="stat-num">120+</div>
+        <div class="stat-label">Brands launched</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">8yr</div>
+        <div class="stat-label">In the industry</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">4.2×</div>
+        <div class="stat-label">Avg. ROAS delivered</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Client retention rate</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-tag">What we do</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245M21 8.25c0 .41-.035.812-.1 1.2M9 2.25h6M12 2.25V6"/></svg>
+        </div>
+        <h3>Brand Strategy</h3>
+        <p>Positioning, identity systems, and messaging that make your brand instantly recognizable and emotionally resonant.</p>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"/><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"/></svg>
+        </div>
+        <h3>Paid Media & Ads</h3>
+        <p>High-converting paid campaigns across Google, Meta, and TikTok — optimized for reach, retargeting, and ROI.</p>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5"/></svg>
+        </div>
+        <h3>SEO & Content</h3>
+        <p>Organic growth strategies — technical SEO, authority content, and link building that compound over time.</p>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+        </div>
+        <h3>Social Media</h3>
+        <p>Content strategy and community management that builds engaged audiences and drives consistent brand awareness.</p>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z"/></svg>
+        </div>
+        <h3>Email Marketing</h3>
+        <p>Full-funnel email systems — from welcome sequences to re-engagement campaigns — that nurture and convert.</p>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
+        </div>
+        <h3>Growth Consulting</h3>
+        <p>Data-driven growth audits, competitor analysis, and go-to-market strategy for scaling businesses.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-tag">Selected work</div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-img teal">Verdant</div>
+        <div class="work-meta">
+          <div class="work-tag">Brand Strategy · Paid Media</div>
+          <h4>Scaling a sustainable skincare brand to $2M ARR</h4>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-img blue">Pulsify</div>
+        <div class="work-meta">
+          <div class="work-tag">SEO · Content · Email</div>
+          <h4>B2B SaaS — 3× organic traffic in 6 months</h4>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-img amber">Solaro</div>
+        <div class="work-meta">
+          <div class="work-tag">Full-service Campaign</div>
+          <h4>Product launch reaching 500K impressions in week one</h4>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-img pink">Lumi</div>
+        <div class="work-meta">
+          <div class="work-tag">Branding · Social Media</div>
+          <h4>Building a 200K-follower lifestyle brand from scratch</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-tag">How we work</div>
+    <div class="process-row">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Discover</h4>
+        <p>Deep-dive into your brand, market, competitors, and goals.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>Strategize</h4>
+        <p>Craft a tailored roadmap with clear KPIs and milestones.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Execute</h4>
+        <p>Launch campaigns with full creative and technical support.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Optimize</h4>
+        <p>Continuous iteration based on data and performance signals.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-tag">Client stories</div>
+    <div class="testimonial-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>Working with this team transformed our brand. Within three months we had a clear voice, a beautiful identity, and campaigns that actually converted.</blockquote>
+        <div class="testi-author">
+          <div class="avatar av1">SR</div>
+          <div>
+            <div class="author-name">Sara Ramos</div>
+            <div class="author-role">Founder, Verdant Skincare</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>Our SEO went from non-existent to our biggest acquisition channel. The team is sharp, communicative, and genuinely cares about results.</blockquote>
+        <div class="testi-author">
+          <div class="avatar av2">JL</div>
+          <div>
+            <div class="author-name">James Liu</div>
+            <div class="author-role">CEO, Pulsify</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>They don't just execute — they think like partners. The launch strategy they built for us was the most organized we've ever had.</blockquote>
+        <div class="testi-author">
+          <div class="avatar av3">MK</div>
+          <div>
+            <div class="author-name">Maya Kowalski</div>
+            <div class="author-role">CMO, Solaro</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>From zero to 200K followers and a fully monetized brand. We couldn't have done this without the social strategy they designed for us.</blockquote>
+        <div class="testi-author">
+          <div class="avatar av4">AC</div>
+          <div>
+            <div class="author-name">Amara Chen</div>
+            <div class="author-role">Co-founder, Lumi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready to grow <em>together?</em></h2>
+    <p>Tell us about your brand — we'll put together a free strategy session.</p>
+    <div class="cta-group">
+      <button class="cta-btn" onclick="sendPrompt('Help me write a strong contact / inquiry section for my agency portfolio')">Book a free call ↗</button>
+      <button class="btn-outline" onclick="sendPrompt('What pricing models work best for digital marketing agencies?')">View pricing</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo">Apex Studio</div>
+    <div class="footer-links">
+      <a>LinkedIn</a>
+      <a>Instagram</a>
+      <a>Dribbble</a>
+      <a>hello@apexstudio.co</a>
+    </div>
+  </footer>
+
+</div>
